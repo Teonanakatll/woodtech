@@ -1,0 +1,496 @@
+{% extends 'base.html' %}
+
+{% load index_tags %}
+
+{% block content %}
+<body>
+
+	<header class="head container-fluid">
+
+		{% show_menu menu info link_slug %}
+
+
+		<div class="slider-text">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide slider-text__slide">
+					<div class="slider-text__content">
+						<div class="slider-text__title" data-swiper-parallax="-20%">Woodhouse</div>
+						<div class="slider-text__header" data-swiper-parallax="-150%">Дизайн на высоком уровне</div>
+						<p class="slider-text__desc" data-swiper-parallax="-130%">Разработка и реализация красивых интерьеров из дерева ещё не была так доступна. Интерьер из дерева различной породы сделают ваш дом уютным и тёплым радуя вас и ваших гостей.</p>
+					</div>
+				</div>
+
+
+				<div class="swiper-slide slider-text__slide">
+					<div class="slider-text__content">
+						<div class="slider-text__title" data-swiper-parallax="-20%">Проектирование</div>
+						<div class="slider-text__header" data-swiper-parallax="-150%">Индивидуальные творческие решения</div>
+						<p class="slider-text__desc" data-swiper-parallax="-130%">Мы никогда не пользуемся лекалами и шаблонами. Каждое наше решение уникально и разрабатывается под каждого клиента индивидуально. Только так можно создать по настоящему уникальный дизайн.</p>
+					</div>
+				</div>
+
+				<div class="swiper-slide slider-text__slide">
+					<div class="slider-text__content">
+						<div class="slider-text__title" data-swiper-parallax="-20%">Концепт</div>
+						<div class="slider-text__header" data-swiper-parallax="-150%">Создание футиристичных инсталяций</div>
+						<p class="slider-text__desc" data-swiper-parallax="-130%">Одно из наших направлений создание концептуальных инсталяций из древесины для тех кто ценит современное искуство или желает разнообразить свой интерер.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="slider-img">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide slider-img__slide">
+					
+					<div class="slider-img__slide">
+						<div class="slider-img__bg" data-swiper-parallax="30%" style="background-image: url(/images/dist/portfolio/interior-3.jpg)"></div>
+					</div>
+				</div>
+
+				<div class="swiper-slide slider-img__slide">
+					
+					<div class="slider-img__slide">
+						<div class="slider-img__bg" data-swiper-parallax="30%" style="background-image: url(/images/dist/portfolio/house-2.jpg)"></div>
+					</div>
+				</div>
+
+				<div class="swiper-slide slider-img__slide">
+					
+					<div class="slider-img__slide">
+						<div class="slider-img__bg" data-swiper-parallax="30%" style="background-image: url(/images/dist/portfolio/installation-1.jpg)"></div>
+					</div>
+				</div>
+
+				
+			</div>
+
+		</div>
+
+		<div class="nav-panel">
+
+			<div class="slider-pagination-count">
+				<span class="current">01</span><span class="total">0</span>
+			</div>
+
+			<div class="slider-scrollbar">
+				<div class="swiper-scrollbar"></div>
+			</div>
+
+			<div class="slider-navigation">
+				<div class="slider-navigation-container">
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+				</div>
+
+			</div>
+		</div>
+
+	</header>
+
+	<section class="section-trust">
+		<div class="container-fluid container-deep">
+			<div class="row">
+
+				<div class="col-lg-9">
+
+					<div class="rtust-header-wrap">
+						<h2 class="trust-header middle-header">Нам доверяют</h2>
+					</div>
+
+					<div class="trust-list">
+
+						<div class="d-none d-lg-block">
+							<div class="row">
+
+								<div class="col-sm-4 trust-list__col">
+									<p class="small-text"><span>860</span> клиентов по всему миру</p>
+									<p class="small-text"><span>36</span> лучших франчайзи</p>
+									<p class="small-text"><span>38</span> говорящих попугаев</p>
+								</div>
+								<div class="col-sm-4 trust-list__col">
+									<p class="small-text"><span>12</span> надёжных партнёра</p>
+									<p class="small-text"><span>108</span> производителей мебели</p>
+									<p class="small-text"><span>256</span> восьмибитных цветов</p>
+								</div>
+								<div class="col-sm-4 trust-list__col">
+									<p class="small-text"><span>12</span> поставщиков</p>
+									<p class="small-text"><span>85</span> сотрудников</p>
+								</div>
+									
+							</div>
+						</div>
+
+						<div class="d-lg-none">
+							<div class="row row-sm">
+
+								<div class="col-sm-6 trust-list__col">
+									<p class="small-text"><span>860</span> клиентов по всему миру</p>
+									<p class="small-text"><span>36</span> лучших франчайзи</p>
+									<p class="small-text"><span>38</span> говорящих попугаев</p>
+									<p class="small-text"><span>12</span> надёжных партнёра</p>
+									<p class="small-text"><span>108</span> производителей мебели</p>
+								</div>
+
+								<div class="col-sm-6 trust-list__col">
+									<p class="small-text"><span>12</span> надёжных партнёра</p>
+									<p class="small-text"><span>108</span> производителей мебели</p>
+									<p class="small-text"><span>256</span> восьмибитных цветов</p>
+									<p class="small-text"><span>12</span> поставщиков</p>
+									<p class="small-text"><span>85</span> сотрудников</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3">
+					<div class="trust-content">
+
+						<div class="trust-content__title">Позвоните нам или оставьте заявку с сайта. Мы перезвоним вам в течении 10 минут</div>
+
+						<div class="trust-content__phone">{{ info.phone }}</div>
+
+						<a href="#" class="button trust-content__button">Оформить заявку сейчас</a>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+
+	<section class="projects">
+
+			<div class="projects-top container-fluid">
+				<div class="row">
+
+					<div class="col-md-6 order-lg-1  order-md-1 order-sm-2 order-2">
+						<p class="small-text">Представляем вая лучшие проекты, разработанные нашей командой профессионалов с любовью и заботой о клиентах. Портфолио позволит вам выбрать интересный стиль, цвет дерева, фактуру, дизайн и расположение элементов.</p>
+					</div>
+
+					<div class="decor-line"></div>
+
+					<div class="col-md-6 order-lg-2  order-md-2 order-sm-1 order-1">
+
+						<p class="right">\\лучшие работы</p>
+						<h2>Создаём тёплую атмосферу вашего отдыха</h2>
+
+					</div>
+
+					<!-- кнопка для больших разрешений -->
+					<div class="button-wrap-large d-none d-md-flex">
+						<a href="#" class="button projects-button">Показать ещё</a>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="projects-bot container-fluid">
+				<div class="row">
+
+					<div class="col-md-4">
+
+						<a href="#" class="projects-item">
+
+							<div class="pattern">
+
+									<div class="corner corner1"></div>
+									<div class="corner corner2"></div>
+									<div class="corner corner3"></div>
+									<div class="corner corner4"></div>
+
+								<div class="overlay projects-item-img" style="background-image: url(images/dist/portfolio/interior-4.jpg)"></div>
+							</div>
+
+							<div class="projects-item__content">
+
+								<div class="projects-item__content-adress">
+									<img src="/images/dist/icons-src/mapmarker.svg" alt="alt" class="map">
+										Москва, пр. Скулатова, 224, оф. 3.
+								</div>
+								
+								<div class="dots">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+
+								<div class="projects-item__content-header">
+									<h3>Современная гостинная в древесных тонах</h3>
+								</div>
+
+							</div>
+						</a>
+
+					</div>
+
+					
+					<div class="col-md-4">
+
+						<a href="#" class="projects-item">
+
+							<div class="pattern">
+
+									<div class="corner corner1"></div>
+									<div class="corner corner2"></div>
+									<div class="corner corner3"></div>
+									<div class="corner corner4"></div>
+
+								<div class="overlay projects-item-img" style="background-image: url(images/dist/portfolio/interior-5.1.jpg)"></div>
+							</div>
+
+							<div class="projects-item__content">
+
+								<div class="projects-item__content-adress">
+									<img src="/images/dist/icons-src/mapmarker.svg" alt="alt" class="map">
+										Москва, Рублёво-Успенское ш.
+								</div>
+								
+								<div class="dots">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+
+								<div class="projects-item__content-header">
+									<h3>Панорамная чилаут зона для чтения и отдыха</h3>
+								</div>
+
+							</div>
+						</a>
+
+					</div>
+
+					
+					<div class="col-md-4">
+
+						<a href="#" class="projects-item">
+
+							<div class="pattern">
+
+									<div class="corner corner1"></div>
+									<div class="corner corner2"></div>
+									<div class="corner corner3"></div>
+									<div class="corner corner4"></div>
+
+								<div class="overlay projects-item-img" style="background-image: url(images/dist/portfolio/interior-3.jpg)"></div>
+							</div>
+
+							<div class="projects-item__content">
+
+								<div class="projects-item__content-adress">
+									<img src="/images/dist/icons-src/mapmarker.svg" alt="alt" class="map">
+										г. Москва, На Якиманке
+								</div>
+								
+								<div class="dots">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+
+								<div class="projects-item__content-header">
+									<h3>Уютный лофт в светлых древесных тонах</h3>
+								</div>
+
+							</div>
+						</a>
+
+					</div>
+
+					<!-- кнопка для больших разрешений -->
+					<div class="col-md-12">
+						<div class="button-wrap-small d-md-none">
+							<a href="#" class="button projects-button">Показать ещё</a>
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+
+	</section>
+
+	<section class="section-about">
+		<div class="about container-fluid">
+			<div class="row">
+
+				<div class="col-lg-5 col-md-6 about-left">
+
+					<div class="about-left-decor"></div>
+
+					<div class="about-image" style="background-image: url(/images/dist/portfolio/interior-6_adv.jpg)">
+
+						<div class="about-left-desc">
+							<span>32</span>
+							<p>года <br> на рынке</p>
+						</div>
+					
+					</div>
+
+				</div>
+
+				<div class="col-md-6 offset-lg-1 about-right">
+
+					<div class="row">
+						<div class="col-md-12">
+
+							<div class="top">
+
+								<span>\\коротко о нас</span>
+								<h3 class="regular-header">Проектируем и создаём экологичный комфорт</h3>
+
+								<div class="dots dots-horizontal">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+
+								<p>В работе мы используем только лучшие материалы на рынке по доступным ценам. Наши специалисты подберут наиболее подходящие породы дерева, специалисты по дизайну разработают готовое решение.</p>
+
+							</div>
+							
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col-sm-6">
+							<div class="about-item">
+
+								<div class="about-item-header">
+									<img class="icon icon-list" src="/images/dist/icons-src/test.svg" alt="alt">
+									<h4>Безопасные материалы</h4>
+								</div>
+								<p>Безопасность каждого из используемых материалов подтверждается соответствующим сертификатом европейского стандарта. Мы используем продукцию только проверенных годами брендов.</p>
+								<a href="#" class="about-link	read-more">подробнее</a>
+
+							</div>
+						</div>
+
+						<div class="col-sm-6 second-item">
+							<div class="about-item">
+
+								<div class="about-item-header">
+									<img class="icon-wood" src="/images/dist/icons-src/wood-cut.svg" alt="">
+									<h4>Безопасные материалы</h4>
+								</div>
+								<p>В создании неповторимых интерьеров мы используем только качественную, проверенную древесину, которая будет служить вам долгие годы, сохраняя свой безупречный первозданный внешний вид.</p>
+								<a href="#" class="about-link	read-more">подробнее</a>
+								
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section class="partners">
+		<div class="container-fluid overlay" style="background-image: url(images/dist/portfolio/stairs-2.jpg)">
+			
+			<h2 class="regular-header">Наши партнёры</h2>
+
+			<div class="slider-partners">
+				<div class="swiper-wrapper">
+
+					<div class="swiper-slide swiper-slide-1" data-swiper-autoplay="2000">
+						<img src="/images/dist/partners/milano.png" alt="" class="milano">
+						<p><span>Milano Parquet S.R.L</span> - мы заботимся о древесине и тщательно следим за всеми производственными процессами.</p>
+					</div>
+
+					<div class="swiper-slide swiper-slide-2" data-swiper-autoplay="2000">
+						<img src="/images/dist/partners/mazzucato.png" alt="" class="milano">
+						<p><span>Mazzucato Legnami</span> - итальянский производитель древесины крупнейший на рынке Европы.</p>
+					</div>
+
+					<div class="swiper-slide swiper-slide-3" data-swiper-autoplay="2000">
+						<img src="/images/dist/partners/fanfani.png" alt="" class="milano">
+						<p><span>Andrea Fanfani</span> - создаёт уникальную итальянскую мебель ручной работы, как продолжение вашего интерьера.</p>
+					</div>
+
+					<div class="swiper-slide swiper-slide-4">
+						<img src="/images/dist/partners/cappelini.png" alt="" class="milano">
+						<p><span>Angelo Cappelini</span> - воспроизводит мебель ушедших эпох: ампир, баокко, рококо и многие другие.</p>
+					</div>
+
+					<div class="swiper-slide swiper-slide-5">
+						<img src="/images/dist/partners/logo-lasole.png" alt="" class="milano">
+						<p><span>Lavorazione Sottoprodotti Legno</span> - лидеры рынка Италии и Европы в области производства древесины.</p>
+					</div>
+
+				</div>
+			</div>
+		
+		</div>
+	</section>
+
+	<section class="blog">
+		<div class="container-fluid">
+
+			<h2 class="regular-header">Наш блог</h2>
+
+			<div class="row blog-wrap">
+
+				<div class="col-md-4">
+					<div class="blog-item">
+
+						<div class="item-wrap">
+							<img src="images/dist/portfolio/stairs-1.jpg" alt="" class="img-blog img-responsive">
+							<span class="date"><span>12</span> июля</span>
+							<h3>Построили потрясающую деревянную лестницу</h3>
+							<p>Один из самых потрясающих проектов нашей компании - винтовая деревянная лестница в старинном стиле.</p>
+							<a href="#" class="read-more">Читать полностью</a>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="blog-item">
+
+						<div class="item-wrap">
+							<img src="images/dist/portfolio/interior-7-thumb.png" alt="#" class="img-blog img-responsive">
+							<span class="date"><span>15</span> июня</span>
+							<h3>Создание деревянной футуристичной спальни</h3>
+							<p>Создание уникальнейшего проекта - деревянной спольни в футуристичном стиле заняло у команды Woodtech два месяца.</p>
+							<a href="#" class="read-more">Читать полностью</a>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="item-more">
+						<div class="overlay" style="background-image: url(/images/dist/other/wood-decoration.jpg)">
+							<a href="#">Перейти ко всем записям блога</a>
+						</div>
+						
+					</div>
+				</div>
+
+			</div>
+
+			<div class="decor-borders">
+				<div class="decor-border border1"></div>
+				<div class="decor-border border2"></div>
+				<div class="decor-border border3"></div>
+			</div>
+
+		</div>
+	</section>
+
+
+	{% endblock %}
