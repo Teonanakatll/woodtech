@@ -22,6 +22,7 @@ from django.urls import path, include
 from wood import settings
 
 urlpatterns = [
+    path('ckeditor5/', include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
 ]

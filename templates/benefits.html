@@ -1,5 +1,8 @@
-<!--#include virtual="parts/header.html" -->
+{% extends 'base.html' %}
 
+{% load index_tags %}
+
+{% block content %}
 <div class="container-fluid sect-menu">
 	<!--#include virtual="parts/menu.html" -->
 </div>
@@ -11,7 +14,7 @@
 			
 			<div class="col-md-3">
 
-				<!--#include virtual="parts/aside.html" -->
+        {% show_menu info main_menu active_category %}
 
 			</div>
 
@@ -107,5 +110,4 @@
 
 	</div>
 </section>
-
-<!--#include virtual="parts/footer.html" -->
+{% endblock %}

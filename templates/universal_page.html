@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load index_tags %}
+
+{% block content %}
+  <div class="container-fluid sect-menu">
+    {% show_menu info main_menu active_category %}
+  </div>
+
+  <section class="post">
+    <div class="container-fluid">
+
+      <div class="main-header">
+        <h1 class="typography-header">{{ article.header }}</h1>
+        <p class="desc">{{ article.short }}</p>
+      </div>
+
+      <article>
+        {{ article.article|safe }}
+      </article>
+
+    </div>
+  </section>
+{% endblock %}

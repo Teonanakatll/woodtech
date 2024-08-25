@@ -1,7 +1,9 @@
-<!--#include virtual="parts/header.html" -->
+{% extends 'base.html' %}
+{% load index_tags %}
 
+{% block content %}
 <div class="sect-menu container-fluid">
-	<!--#include virtual="parts/menu.html" -->
+  {% show_menu info main_menu active_category %}
 </div>
 
 <div class="partners-section">
@@ -20,65 +22,22 @@
 
 					<h1 class="typography-header">Наши партнёры</h1>
 
-					<div class="col-sm-12">
-						<div class="partners-item">
+          {% for partner in partners %}
+            <div class="col-sm-12">
+              <div class="partners-item">
 
-							<div class="partners-item-logo">
-								<img src="images/dist/partners/milano.png" alt="alt" class="img-milano">
-							</div>
+                <div class="partners-item-logo">
+                  <img src="{{ partner.label.url }}" alt="{{ partner.name }}" class="img-milano">
+                </div>
 
-							<div class="partners-item-desc">
-								<h3>Milano Parquet S.L.R.</h3>
-								<p class="regulap-text">Компания родилась из города, в котором она получила своё название: Милан. Современный и динамичный город, всегда идущий в ногу с тенденциями и постоянно развивающийся. Прогресс, инновации и возможности тесно связанны с образом жизни этого мегаполиса, где, пользуясь этим влиянием, наша компания более 20 лет развивалась вместе с ним. Мы страстно и целеустремлённо заботимся о древесине и с особой тщательностью следим за всем производственным процессом, от тщательного отбора сырья до различных процессов трансформации и отделки поверхностей, чтобы превратить драгоценные стволы в изысканные и качественные полы.</p>
-							</div>
-							
-						</div>
-					</div>
+                <div class="partners-item-desc">
+                  <h3>{{ partner.name }}</h3>
+                  <p class="regulap-text">{{ partner.text }}</p>
+                </div>
 
-					<div class="col-sm-12">
-						<div class="partners-item">
-
-							<div class="partners-item-logo">
-								<img src="images/dist/partners/mazzucato.png" alt="alt" class="img-mazzucato">
-							</div>
-
-							<div class="partners-item-desc">
-								<h3>Mazzucato Legnami</h3>
-								<p class="regulap-text">Mazzucato Legnami - историческая компания в районе Падуи, специализирующаяся на дереве. В центре производственной деятельности находится лес, пиломатериалы, вагонка, садовые товары, столбы. Mazzucato Legnami широкий спектор услуг и продуктов в лесном секторе, оптом и в розницу - для частных лиц, ремесленников, промышленности и государственных организаций (через MFPA)</p>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="col-sm-12">
-						<div class="partners-item">
-
-							<div class="partners-item-logo">
-								<img src="images/dist/partners/fanfani.png" alt="alt" class="img-fanfani">
-							</div>
-
-							<div class="partners-item-desc">
-								<h3>Andrea Fanfani</h3>
-								<p class="regulap-text">Компания родилась из города, в котором она получила своё название: Милан. Современный и динамичный город, всегда идущий в ногу с тенденциями и постоянно развивающийся. Прогресс, инновации и возможности тесно связанны с образом жизни этого мегаполиса, где, пользуясь этим влиянием, наша компания более 20 лет развивалась вместе с ним. Мы страстно и целеустремлённо заботимся о древесине и с особой тщательностью следим за всем производственным процессом, от тщательного отбора сырья до различных процессов трансформации и отделки поверхностей, чтобы превратить драгоценные стволы в изысканные и качественные полы.</p>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="col-sm-12">
-						<div class="partners-item">
-
-							<div class="partners-item-logo">
-								<img src="images/dist/partners/cappelini.png" alt="alt" class="img-cappelini">
-							</div>
-
-							<div class="partners-item-desc">
-								<h3>Angelo Cappelini</h3>
-								<p class="regulap-text">Более, чем вековой опыт в обработке дерева Angelo Cappelini уходит своими корнями в Брицанду, территорию знаменитую своими традициями краснодеревщиков. Из ремесленной мастерской, основанной в 1886 году, до первой коллекции, представленной в шестидесятых годах, эволюция марки была постоянной. Более десяти этапов предстваляют производственный процесс Angelo Cappelini, где гармонично чередуются фазы ручной обработки и промышленные фазы. В данном контексте фазы реализации с учётом станков последнего поколения сочетаются с опытом и техническими знаниями мастеров, делая процессы более эффективными, но в то же время следуя традициям и качеству ручной работы. Именно эта синергическая смесь, наряду с пристальным вниманием к деталям, отличают фирменные коллекции этой марки, известной во всём мире своим уникальным эксклюзивным стилем и высоким качеством исполнения.</p>
-							</div>
-
-						</div>
-					</div>
+              </div>
+            </div>
+          {% endfor %}
 
 				</div>
 
@@ -87,6 +46,7 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
 
 
 <!--#include virtual="parts/footer.html" -->

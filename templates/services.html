@@ -1,15 +1,18 @@
-<!--#include virtual="parts/header.html" -->
+{% extends 'base.html' %}
+{% load index_tags %}
 
+
+{% block content %}
 <div class="container-fluid sect-menu">
-	<!--#include virtual="parts/menu.html" -->
+  {% show_menu info main_menu active_category %}
 </div>
 
 <section class="services">
 	<div class="container-fluid">
 
 		<div class="main-header">
-			<h1 class="typography-header">Наши услуги</h1>
-			<p class="desc">Здесь мы собрали все ключевые услуги нашей компании, разбитые по категориям. Если необходимой вам услуги нет в списке, сообщите нам.</p>
+			<h1 class="typography-header">{{ page_info.header }}</h1>
+			<p class="desc">{{ page_info.description }}</p>
 		</div>
 
 		<div class="services-content">
@@ -18,138 +21,25 @@
 
 				<div class="row stretch">
 
-					<div class="col-md-6 item-wrap">
+          {% for service in services %}
+            <div class="col-md-6 item-wrap">
+              <a href="{{ service.get_absolute_url }}" class="services-content-item">
+                <div class="row">
 
-						<a href="#" class="services-content-item">
+                  <div class="col-sm-6  item-content">
+                    <h3>{{ service.header }}</h3>
+                    <p class="small-text">{{ service.short }}</p>
+                  </div>
 
-							<div class="row">
+                  <div class="col-sm-6">
+                    <div class="overlay services-img" style="background-image: url({{ service.image.url }})"></div>
+                  </div>
 
-								<div class="col-sm-6  item-content">
-									<h3>Дизайн интерьера</h3>
-									<p class="small-text">Мы проектируем потрясающие дизайны интерьера вот уже более 30 лет и радуем наших клиентов неповторимыми работами, выполненными в различных стилях и со вкусом.</p>
-								</div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
 
-								<div class="col-sm-6">
-									<div class="overlay services-img" style="background-image: url(images/dist/portfolio/interior-2.jpg)"></div>
-								</div>
-
-							</div>
-							
-						</a>
-						
-					</div>
-
-					<div class="col-md-6">
-
-						<a href="#" class="services-content-item">
-
-							<div class="row">
-
-								<div class="col-sm-6  item-content">
-									<h3>Проектирование</h3>
-									<p class="small-text">Производим высокоточные архитектурные инженерные расчёты любого плана. С нами вы можете не беспокоиться о долговечности и качестве любых конструкций.</p>
-								</div>
-
-								<div class="col-sm-6">
-									<div class="overlay services-img" style="background-image: url(images/dist/other/blueprints.jpg)"></div>
-								</div>
-
-							</div>
-							
-						</a>
-						
-					</div>
-
-				</div>
-
-				<div class="row stretch">
-
-					<div class="col-md-6 item-wrap">
-
-						<a href="#" class="services-content-item">
-
-							<div class="row">
-
-								<div class="col-sm-6  item-content">
-									<h3>Поставка дерева</h3>
-									<p class="small-text">Мы поставляем исключительно качественные породы древесины от итальянских и французских поставщиков, вся древесина соответствует евростандарту.</p>
-								</div>
-
-								<div class="col-sm-6">
-									<div class="overlay services-img" style="background-image: url(images/dist/other/planks.png)"></div>
-								</div>
-
-							</div>
-							
-						</a>
-						
-					</div>
-
-					<div class="col-md-6">
-
-						<a href="#" class="services-content-item">
-
-							<div class="row">
-
-								<div class="col-sm-6  item-content">
-									<h3>Ремонт</h3>
-									<p class="small-text">Выполняем ремонт мебели и изделий из древесины. В нашей современной технологичной мастерской найдутся инструменты и материалы для любых задач.</p>
-								</div>
-
-								<div class="col-sm-6">
-									<div class="overlay services-img" style="background-image: url(images/dist/other/glossing.jpg)"></div>
-								</div>
-
-							</div>
-							
-						</a>
-						
-					</div>
-
-				</div>
-
-				<div class="row stretch">
-
-					<div class="col-md-6 item-wrap">
-
-						<a href="#" class="services-content-item">
-
-							<div class="row">
-
-								<div class="col-sm-6  item-content">
-									<h3>Концепт</h3>
-									<p class="small-text">Наши дизайнеры имеют опыт создания массштабных проектов на ведущих международных выставоках</p>
-								</div>
-								<div class="col-sm-6">
-									<div class="overlay services-img" style="background-image: url(images/dist/portfolio/installation-1.jpg)"></div>
-								</div>
-
-							</div>
-							
-						</a>
-						
-					</div>
-
-					<div class="col-md-6">
-
-						<a href="#" class="services-content-item">
-
-							<div class="row">
-
-								<div class="col-sm-6  item-content">
-									<h3>Выезд мастера</h3>
-									<p class="small-text">Вы обладатель старинной тяжёлой или необычной мебели или изделий из древесины? Мы приедем к вам со всеми необходимыми инструментом сами.</p>
-								</div>
-
-								<div class="col-sm-6">
-									<div class="overlay services-img" style="background-image: url(images/dist/other/tools.jpg)"></div>
-								</div>
-
-							</div>
-							
-						</a>
-						
-					</div>
 				</div>
 
 			</div>
@@ -165,4 +55,4 @@
 
 </div>
 
-<!--#include virtual="parts/footer.html" -->
+{% endblock %}
