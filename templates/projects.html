@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load index_tags %}
 
+{% block title %} - {{ page_info.header }}{% endblock %}
+
 {% block content %}
 <div class="container-fluid sect-menu">
   {% show_menu info main_menu active_category %}

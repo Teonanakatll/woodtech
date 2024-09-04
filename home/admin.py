@@ -4,7 +4,7 @@ from django.forms import TextInput, Textarea
 from django.utils.safestring import mark_safe
 
 from home.models import MainInfo, MainMenu, Soc, FooterInfo, MainSlide, IndexPage, TrustItem, Project, ProjectPhoto, \
-    Benefit, Partner, Blog, Service
+    Benefit, Partner, Blog, Service, ProjectWorker, ProjectCharacteristic
 
 formfield_overrides = {
     models.CharField: {'widget': TextInput(attrs={'size': '25'})},
@@ -18,8 +18,8 @@ class MainInfoAdmin(admin.ModelAdmin):
     list_display = ('big_word', 'thin_word', 'phone', 'address', 'is_published')
 
     fieldsets = (
-        ('Общая информация о сайте и фирме', {
-            'fields': (('big_word', 'thin_word', 'phone', 'address'),)
+        ('Общая информация о сайте и фирме, информационные блоки страницы feedback.html', {
+            'fields': (('big_word', 'thin_word', 'phone', 'address'), ('feedback_header', 'feedback_short', 'map'),)
         }),
         ('Категории сайта. Логика маршрутов, get_absolute_url, имён шаблонов и представления завязано на поле url', {
             'fields': (('menu',),)
@@ -72,7 +72,7 @@ class MainSlideAdmin(admin.ModelAdmin):
 
     get_image.short_description = 'Фото слайда'
 
-class MainSlideInlines(admin.TabularInline):
+class MainSlideInline(admin.TabularInline):
     """Класс для добавления слайда в классе IndexPage"""
     model = MainSlide
     extra = 1
@@ -92,7 +92,7 @@ class TrustItemAdmin(admin.ModelAdmin):
     list_display = ('count', 'string')
     list_display_links = ('count',)
 
-class TrustItemInlines(admin.TabularInline):
+class TrustItemInline(admin.TabularInline):
     """Для добавления записей через класс IndexPage"""
     model = TrustItem
     extra = 1
@@ -117,7 +117,7 @@ class ProjectPhotoAdmin(admin.ModelAdmin):
     get_photo.short_description = 'Фото проекта'
     get_project_main_image.short_description = 'Главное фото проекта'
 
-class ProjectPhotoInlines(admin.TabularInline):
+class ProjectPhotoInline(admin.TabularInline):
     """Для добавления фото через класс IndexPage"""
     model = ProjectPhoto
     extra = 3
@@ -127,11 +127,41 @@ class ProjectPhotoInlines(admin.TabularInline):
         if object.photo:
             return mark_safe(f"<img src='{object.photo.url}' height=100 width=auto>")
 
+@admin.register(ProjectWorker)
+class ProjectWorkerAdmin(admin.ModelAdmin):
+    """Класс описывает работника проекта"""
+    list_display = ('profession', 'name', 'get_photo')
+    list_display_links = ('profession',)
+    readonly_fields = ('get_photo',)
+
+    def get_photo(self, object):
+        if object.photo:
+            return mark_safe(f"<img src='{object.photo.url}' height=100 width=auto>")
+
+    get_photo.short_description = 'Фото работника'
+
+class ProjectWorkerInline(admin.TabularInline):
+    """Для добавления работника через класс Project"""
+    model = ProjectWorker
+    extra = 1
+    readonly_fields = ('get_photo',)
+
+    def get_photo(self, object):
+        if object.photo:
+            return mark_safe(f"<img src='{object.photo.url}' height=100 width=auto>")
+
+    get_photo.short_description = 'Фото работника'
+
+
+class ProjectCharInline(admin.TabularInline):
+    """Для добавления характеристики через модель Project"""
+    model = ProjectCharacteristic
+    extra = 3
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     """Информация проекта"""
-    list_display = ('name','id', 'draft', 'address', 'get_main_image')
+    list_display = ('name', 'id', 'draft', 'address', 'get_main_image')
     list_display_links = ('name',)
     readonly_fields = ('get_main_image',)
     list_editable = ('draft',)
@@ -139,7 +169,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug': ('name',)}
 
-    inlines = (ProjectPhotoInlines,)
+    inlines = (ProjectPhotoInline, ProjectWorkerInline, ProjectCharInline)
 
     def get_main_image(self, object):
         if object.main_image:
@@ -147,7 +177,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
     get_main_image.short_description = 'Главное фото'
 
-class ProjectInlines(admin.TabularInline):
+class ProjectInline(admin.TabularInline):
     """Для длбавления через класс indexPage"""
     model = Project
     extra = 1
@@ -175,7 +205,7 @@ class BenefitAdmin(admin.ModelAdmin):
 
     get_icon.short_description = 'Иконка'
 
-class BenefitInlines(admin.TabularInline):
+class BenefitInline(admin.TabularInline):
     model = Benefit
     extra = 1
     readonly_fields = ('get_icon',)
@@ -215,7 +245,7 @@ class BlogAdmin(admin.ModelAdmin):
 
     get_main_image.short_description = 'Главное фото блога'
 
-class BlogInlines(admin.TabularInline):
+class BlogInline(admin.TabularInline):
     model = Blog
     extra = 1
     readonly_fields = ('get_main_image',)
@@ -232,7 +262,7 @@ class IndexPageAdmin(admin.ModelAdmin):
     list_display = ('sect_trust_header', 'sect_trust_text', 'get_sect_about_image')
     list_display_links = ('sect_trust_header',)
 
-    inlines = [MainSlideInlines, TrustItemInlines, ProjectInlines, BenefitInlines, BlogInlines]
+    inlines = [MainSlideInline, TrustItemInline, ProjectInline, BenefitInline, BlogInline]
     readonly_fields = ('get_sect_about_image',)
 
     def get_sect_about_image(self, object):

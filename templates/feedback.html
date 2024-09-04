@@ -1,14 +1,19 @@
-<!--#include virtual="parts/header.html" -->
+{% extends 'base.html' %}
+{% load index_tags %}
+{% load static %}
 
+{% block title %} - {{ info.feedback_header }}{% endblock %}
+
+{% block content %}
 <div class="container-fluid sect-menu">
-	<!--#include virtual="parts/menu.html" -->
+  {% show_menu info main_menu active_category %}
 </div>
 
 <section class="feedback-section">
 	<div class="container-fluid">
 
-		<h1>Обратная связь</h1>
-		<p>Задайте нам любой вопрос, напишите или сделайте заказ. Наши менеджеры ответят вам в любое время.</p>
+		<h1>{{ info.feedback_header }}</h1>
+		<p>{{ info.feedback_short }}</p>
 
 		<form action="#">
 			<!-- <main class="form-wrap"> -->
@@ -28,15 +33,17 @@
 		<h2 class="regular-header">Наши контакты</h2>
 
 			<div class="adress">
-				<img src="/images/dist/icons-src/mapmarker.svg" alt="alt" class="map">
-					Москва, пр. Скулатова, 224, оф. 3.
+				<img src="{% static 'image/icons-src/mapmarker.svg' %}" alt="alt" class="map">
+        {{ info.address }}
 			</div>
 
-			<div class="phone">+7 (995) 246-75-35</div>
+			<div class="phone">{{ info.phone }}</div>
 
-			<div class="img-map" style="background-image: url(images/dist/other/map.jpg)"></div>
+			<div class="img-map">
+        {{ info.map|safe }}
+      </div>
 
 	</div>
 </section>
 
-<!--#include virtual="parts/footer.html" -->
+{% endblock %}

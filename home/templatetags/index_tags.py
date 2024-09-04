@@ -1,5 +1,7 @@
 from django import template
 
+from home.models import MainMenu
+
 register = template.Library()
 
 @register.inclusion_tag('includes/menu.html')
@@ -13,7 +15,8 @@ def show_footer(info, left, right, services, active_category=0, active_service_c
     return locals()
 
 @register.inclusion_tag('includes/aside.html')
-def show_aside(active_slug=''):
+def show_aside(active_about_category=''):
+    about_menu = MainMenu.objects.filter(draft=False, is_about_category=True)
 
     return locals()
 

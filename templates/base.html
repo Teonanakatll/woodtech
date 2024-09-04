@@ -1,6 +1,30 @@
-{% include 'includes/header.html' %}
-
 {% load index_tags %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+	<base href="/">
+
+	<meta name="description" content="Startup HTML template OptimizedHTML 5">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+	<link rel="icon" href="{% static 'image/favicon.png' %}">
+	<meta property="og:image" content="images/dist/preview.jpg">
+
+	<link rel="stylesheet" href="{% static 'css/app.min.css' %}">
+  <meta name="theme-color" content="#F88500">
+
+	<title>{{ info.big_word|upper }}{% block title %}{% endblock %}</title>
+
+</head>
+
+
 
 {% block content %}
 

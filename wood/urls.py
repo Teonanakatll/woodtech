@@ -17,14 +17,29 @@ Including another URLconf
 import debug_toolbar
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+
+from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView
+
+from home.sitemap import ProjectSitemap, CategorySitemap, ServiceSitemap, BlogSitemap, BenefitSitemap
 
 from wood import settings
+
+sitemaps = {
+    'category': CategorySitemap,
+    'projects': ProjectSitemap,
+    'services': ServiceSitemap,
+    'blogs': BlogSitemap,
+    'benefits': BenefitSitemap,
+}
 
 urlpatterns = [
     path('ckeditor5/', include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    re_path(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 ]
 
 if settings.DEBUG:

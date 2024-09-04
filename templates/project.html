@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load index_tags %}
 
+
 {% load static %}
+
+{% block title %} - {{ project.name }}{% endblock %}
 
 
 {% block content %}
@@ -21,7 +24,7 @@
       </nav>
 
       <div class="adress">
-        <img src="{% static 'image/icons-src/mapmarker.svg' %}" alt="" class="map">
+        <img src="{% static 'image/icons-src/mapmarker.svg' %}" alt="map" class="map">
         {{ project.address }}
       </div>
 
@@ -54,9 +57,11 @@
 
           {% if slides %}
             {% for slide in slides %}
-              <div class="swiper-slide slider-thumb__slide">
-                <div class="slider-thumb__bg" data-swiper-parallax="0" style="background-image: url({{ slide.photo.url }})"></div>
-              </div>
+
+                <div class="swiper-slide slider-thumb__slide">
+                  <div class="slider-thumb__bg" data-swiper-parallax="0" style="background-image: url({{ slide.photo.url }})"></div>
+                </div>
+
             {% endfor %}
 
           {% endif %}
@@ -78,37 +83,21 @@
 
           <div class="col-md-4 article-right">
 
-            <div class="h3">Старший архитектор</div>
-            <img src="/images/dist/other/architector.png" alt="alt">
+            <div class="h3">{{ worker.profession }}</div>
+            <img src="{{ worker.photo.url }}" alt="{{ worker.profession }}">
             <span>Евгений Григорьев</span>
-            <p class="small-text">Выпускник гарвардского университета, кандидат наук, профессиональный архитектор. В общей сложности реализовал более 120 проектов.</p>
+            <p class="small-text">{{ worker.description }}</p>
             <div class="info">
               <span class="info-header">Информация о проекте</span>
               <ul>
-                <li>
-                  <span class="more-dots">.............................................................................................................................................</span>
-                  <p class="info-p">Заказчик</p> <span>Частное лицо</span>
-                </li>
-                <li>
-                  <span class="more-dots">........................................................................................................</span>
-                  <p class="info-p">Площадь</p> <span><i>24</i> кв. м.</span>
-                </li>
-                <li>
-                  <span class="more-dots">.............................................................................................................................................</span>
-                  <p class="info-p">Время разработки</p> <span><i>3</i> недели</span>
-                </li>
-                <li>
-                  <span class="more-dots">.............................................................................................................................................</span>
-                  <p class="info-p">Высота потолка</p> <span><i>3,4</i> метра</span>
-                </li>
-                <li>
-                  <span class="more-dots">.............................................................................................................................................</span>
-                  <p class="info-p">Толщина стены</p> <span><i>40</i> сантиметров</span>
-                </li>
-                <li>
-                  <span class="more-dots">.............................................................................................................................................</span>
-                  <p class="info-p">Толщина стены</p> <span><i></i></span>
-                </li>
+
+                {% for char in chars %}
+                  <li>
+                    <span class="more-dots">........................................................................................................</span>
+                    <p class="info-p">{{ char.name }}</p> <span><i>{{ char.number }} </i>{{ char.words }}</span>
+                  </li>
+                {% endfor %}
+
               </ul>
             </div>
           </div>

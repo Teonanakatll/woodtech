@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
@@ -11,6 +13,7 @@ class MainMenu(models.Model):
     name = models.CharField('Название пункта меню', max_length=25)
     header = models.CharField('Заголовок страницы', max_length=60, blank=True)
     description = models.TextField('Описание', blank=True)
+    article = CKEditor5Field('Статья', config_name='extends', null=True, default=None, blank=True)
     slug = models.SlugField('url', max_length=50, unique=True, db_index=True, default='')
     draft = models.BooleanField('Черновик', default=True)
     is_main_category = models.BooleanField('Пункт главного меню', default=True)
@@ -26,8 +29,8 @@ class MainMenu(models.Model):
         return reverse(f'home:{self.slug}', kwargs={'slug': self.slug})
 
     class Meta:
-        verbose_name = 'Категория главного меню'
-        verbose_name_plural = 'Категории главного меню'
+        verbose_name = 'Категория главного меню и меню about'
+        verbose_name_plural = 'Категории главного меню и меню about'
 
 
 class Soc(models.Model):
@@ -64,8 +67,11 @@ class MainInfo(models.Model):
     """ Основная информация о сайте, название, телефон и адресс"""
     big_word = models.CharField('Первое слово названия', max_length=30, blank=True)
     thin_word = models.CharField('Второе слово', max_length=30, blank=True)
+    feedback_header = models.CharField('Заголовок обратной связи', max_length=100, default='', blank=True)
+    feedback_short = models.CharField('Описание обратной связи', max_length=255, default='', blank=True)
     phone = models.CharField('Телефон', max_length=25, blank=True)
     address = models.CharField('Адрес', max_length=150, blank=True)
+    map = models.TextField('Ссылка на карту', blank=True, null=True, default=0)
     is_published = models.BooleanField('Опубликовать', default=False, blank=True)
     menu = models.ManyToManyField(MainMenu, related_name='main_menu', blank=True)
     soc = models.ManyToManyField(Soc, related_name='site_soc', blank=True)
@@ -145,6 +151,9 @@ class TrustItem(models.Model):
         verbose_name_plural = 'Айтем секции trast'
 
 
+
+
+
 class Project(models.Model):
     """Информация страницы проекта    project.html"""
     main_image = models.ImageField('Главное изображение', upload_to='images/projects/%Y/%m/%d/', blank=True)
@@ -170,15 +179,49 @@ class Project(models.Model):
         ordering = ['id']
 
 
+class ProjectCharacteristic(models.Model):
+    """Класс описывающий характеристики проекта"""
+    name = models.CharField('Название характеристики проекта', max_length=20, blank=True)
+    number = models.CharField('Числовое значение характеристики', max_length=5, blank=True)
+    words = models.CharField('Опсание в 1-2 словах: метров, лет и тд', max_length=20, blank=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default=None, related_name='project_chars')
+
+    def __str__(self):
+        return f'{self.name} - {self.number} {self.words}'
+
+    class Meta:
+        verbose_name = 'Характеристика проекта'
+        verbose_name_plural = 'Характеристики проекта'
+
+
 class ProjectPhoto(models.Model):
     """Фото проекта"""
-    photo = models.ImageField('Фото проекта', upload_to='images/projects/%Y/%m/%d/')
+    photo = models.ImageField('Фото проекта для слайдера', upload_to='images/projects/%Y/%m/%d/')
     project = models.ForeignKey(Project, on_delete=models.CASCADE, default=None, blank=True)
     draft = models.BooleanField('Черновик', default=True)
 
     class Meta:
         verbose_name = 'Фото проекта'
         verbose_name_plural = 'Фото проекта'
+        ordering = ['id']
+
+
+class ProjectWorker(models.Model):
+    """Класс описывает архитектора или дизайнера проекта"""
+    photo = models.ImageField('Фото работника', upload_to='image/workers/', blank=True)
+    profession = models.CharField('Профессия', max_length=100, blank=True)
+    name = models.CharField('Имя', max_length=70, blank=True)
+    description = models.TextField('Описание', blank=True)
+    project = models.ForeignKey(Project, on_delete=models.DO_NOTHING, blank=True, related_name='project_workers')
+
+    def __str__(self):
+        return f'{self.profession} - {self.name}'
+
+    class Meta:
+        verbose_name = 'Работник проекта'
+        verbose_name_plural = 'Работники проекта'
+
+
 
 
 class Benefit(models.Model):
@@ -190,6 +233,7 @@ class Benefit(models.Model):
     article = CKEditor5Field('Статья', config_name='extends', blank=True)
     index_page = models.ForeignKey(IndexPage, on_delete=models.DO_NOTHING, blank=True, null=True, default=None)
     draft = models.BooleanField('Черновик', default=True)
+    time_update = models.DateTimeField('Дата изменения', auto_now=True)
 
 
     def __str__(self):
@@ -228,6 +272,7 @@ class Blog(models.Model):
     short = models.CharField('Краткое описание', max_length=250, blank=True)
     day = models.PositiveSmallIntegerField('Число', blank=True)
     month = models.CharField('Месяц', max_length=15, blank=True)
+    time_update = models.DateTimeField('Дата изменения', auto_now=True)
     index_page = models.ForeignKey(IndexPage, on_delete=models.DO_NOTHING, null=True, default=None, blank=True)
     article = CKEditor5Field('Статья', config_name='extends', blank=True)
     draft = models.BooleanField('Черновик', default=True)
@@ -252,6 +297,7 @@ class Service(models.Model):
     image = models.ImageField('Изображение', upload_to='images/services/', blank=True)
     slug = models.SlugField('url', db_index=True, unique=True)
     article = CKEditor5Field('Статья', config_name='extends', blank=True)
+    time_update = models.DateTimeField('Дата изменения', auto_now=True)
 
     def __str__(self):
         return self.header

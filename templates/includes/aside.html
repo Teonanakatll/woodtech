@@ -4,10 +4,18 @@
 
 	<nav class="footer-nav aside-menu">
 		<ul>
-			<li class="active">О компании</li>
-			<li><a href="benefits.html">Преимущества</a></li>
-			<li><a href="partners.html">Наши партнёры</a></li>
-			<li><a href="feedback.html">Обратная связь</a></li>
+      {% for category in about_menu %}
+        {% if active_about_category == category.slug %}
+			    <li class="active">{{ category.name }}</li>
+        {% else %}
+			    <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+        {% endif %}
+
+      {% endfor %}
+{#			<li class="active">О компании</li>#}
+{#			<li><a href="benefits.html">Преимущества</a></li>#}
+{#			<li><a href="partners.html">Наши партнёры</a></li>#}
+{#			<li><a href="feedback.html">Обратная связь</a></li>#}
 		</ul>
 	</nav>
 

@@ -1,0 +1,7 @@
+#header, .module caption, div.breadcrumbs {
+    background: #5e3a55;
+}
+td img:hover, .form-row img:hover {
+    height: 100%;
+    width: 100%;
+}

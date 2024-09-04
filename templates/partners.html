@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load index_tags %}
 
+{% block title %} - {{ page_info.header }}{% endblock %}
+
 {% block content %}
 <div class="sect-menu container-fluid">
   {% show_menu info main_menu active_category %}
@@ -12,7 +14,7 @@
 
 			<div class="col-md-3">
 
-				<!--#include virtual="parts/aside.html" -->
+        {% show_aside active_about_category %}
 
 			</div>
 
@@ -20,7 +22,7 @@
 
 				<div class="row partners-items">
 
-					<h1 class="typography-header">Наши партнёры</h1>
+					<h1 class="typography-header">{{ page_info.header }}</h1>
 
           {% for partner in partners %}
             <div class="col-sm-12">

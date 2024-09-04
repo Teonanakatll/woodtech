@@ -3,6 +3,8 @@
 
 {% load index_tags %}
 
+{% block title %} {{ info.thin_word }} - Главная{% endblock %}
+
 {% block content %}
 <body>
 
@@ -33,13 +35,15 @@
 		<div class="slider-img">
 			<div class="swiper-wrapper">
 
-        {% for slide_img in slides %}
+        {% for slide in slides %}
 
           <div class="swiper-slide slider-img__slide">
 
-            <div class="slider-img__slide">
-              <div class="slider-img__bg" data-swiper-parallax="30%" style="background-image: url({{ slide_img.image.url }})"></div>
-            </div>
+{#              {% thumbnail slide.image "1089x650" crop="center" quality=80 as im  %}#}
+                <div class="slider-img__slide">
+                  <div class="slider-img__bg" data-swiper-parallax="30%" style="background-image: url({{ slide.image.url }})"></div>
+                </div>
+{#              {% endthumbnail %}#}
           </div>
 
         {% endfor %}
@@ -174,7 +178,7 @@
                 <div class="projects-item__content">
 
                   <div class="projects-item__content-adress">
-                    <img src="{% static 'home/static/image/icons-src/mapmarker.svg' %}" alt="alt" class="map">
+                    <img src="{% static 'image/icons-src/mapmarker.svg' %}" alt="alt" class="map">
                     {{ project.address }}
                   </div>
 
@@ -289,7 +293,7 @@
           {% for partner in partners %}
             <div class="swiper-slide swiper-slide-{{ forloop.counter }}" data-swiper-autoplay="2000">
 
-              <a href="{% url 'home:partners' %}">
+              <a href="{% url 'home:partners' 'partners' %}">
                 <img src="{{ partner.label.url }}" alt="{{ partner.name }}" class="milano">
               </a>
 
