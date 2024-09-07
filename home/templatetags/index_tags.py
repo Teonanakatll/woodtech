@@ -10,7 +10,7 @@ def show_menu(info, main_menu, active_category):
     return locals()
 
 @register.inclusion_tag('includes/footer.html')
-def show_footer(info, left, right, services, active_category=0, active_service_category=0):
+def show_footer(info, left, right, services, request, active_category=0, active_service_category=0):
 
     return locals()
 

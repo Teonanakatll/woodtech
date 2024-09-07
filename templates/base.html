@@ -7,6 +7,16 @@
 
 <head>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7J84ZJQMD9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7J84ZJQMD9');
+  </script>
+
 	<meta charset="utf-8">
 	<base href="/">
 
@@ -18,7 +28,7 @@
 	<meta property="og:image" content="images/dist/preview.jpg">
 
 	<link rel="stylesheet" href="{% static 'css/app.min.css' %}">
-  <meta name="theme-color" content="#F88500">
+  <meta name="theme-color" content="#171A1A">
 
 	<title>{{ info.big_word|upper }}{% block title %}{% endblock %}</title>
 
@@ -58,4 +68,4 @@
         </div>
       {% endif %}
 
-{% show_footer info left right services active_category active_service_category %}
+{% show_footer info left right services request active_category active_service_category %}

@@ -28,10 +28,10 @@
 						</div>
 						<ul>
               {% for m in info.menu.all %}
-                {% if active_slug == m.slug %}
+                {% if active_category == m.slug %}
                   <li class="active">{{ m.name }}</li>
                 {% else %}
-                  <li><a href="#">{{ m.name }}</a></li>
+                  <li><a href="{{ m.get_absolute_url }}">{{ m.name }}</a></li>
                 {% endif %}
               {% endfor %}
 
@@ -54,7 +54,7 @@
                   <li class="active">{{ service.header }}</li>
                 {% else %}
 {#                  {{ active_service_category }}#}
-							    <li><a href="#">{{ service.header }}</a></li>
+							    <li><a href="{{ service.get_absolute_url }}">{{ service.header }}</a></li>
                 {% endif %}
               {% endfor %}
 						</ul>
@@ -97,7 +97,7 @@
 
 			</div>
 
-			<a href="#top" class="soc-border anchor-top">
+			<a href="{{ request.path }}#top" class="soc-border anchor-top">
 				<i class="fa fa-angle-up"></i>
 			</a>
 

@@ -122,7 +122,7 @@
 
 						<div class="trust-content__phone">{{ info.phone }}</div>
 
-						<a href="#" class="button trust-content__button">Оформить заявку сейчас</a>
+						<a href="{% url 'home:feedback' 'feedback' %}" class="button trust-content__button">Оформить заявку сейчас</a>
 
 					</div>
 				</div>
@@ -152,7 +152,7 @@
 
 					<!-- кнопка для больших разрешений -->
 					<div class="button-wrap-large d-none d-md-flex">
-						<a href="#" class="button projects-button">Показать ещё</a>
+						<a href="{%  url 'home:projects' 'projects' %}" class="button projects-button">Показать ещё</a>
 					</div>
 
 				</div>
@@ -200,10 +200,10 @@
 
 
 
-					<!-- кнопка для больших разрешений -->
+					<!-- кнопка для небольших разрешений -->
 					<div class="col-md-12">
 						<div class="button-wrap-small d-md-none">
-							<a href="#" class="button projects-button">Показать ещё</a>
+							<a href="{% url 'home:projects' 'projects' %}" class="button projects-button">Показать ещё</a>
 						</div>
 					</div>
 
@@ -332,7 +332,7 @@
 				<div class="col-md-4">
 					<div class="item-more">
 						<div class="overlay" style="background-image: url({{ index_info.sect_blog_background_more.url }})">
-							<a href="#">Перейти ко всем записям блога</a>
+							<a href="{% url 'home:blog' 'blog' %}">Перейти ко всем записям блога</a>
 						</div>
 						
 					</div>
