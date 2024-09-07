@@ -39,18 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		e.stopPropagation();
 	})
 	
-	const swiperProject = new Swiper('.slider-project', {
-		modules: [Parallax, Controller, Mousewheel, Thumbs],
-		mousewheel: {
-			invert: false,
-		},
-		thumbs: {
-			swiper: swiperThumb,
-		},
-		parallax: true,
-		loop: true,
-		speed: 2400,
-	})
+
 
 	const swiperThumb = new Swiper('.slider-thumb', {
 		modules: [Parallax, Controller, Mousewheel],
@@ -58,12 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			invert: false,
 		},
 		// делает слайды кликабельными
-		slideToClickedSlide: true,
+		// slideToClickedSlide: true,
 		// центрирует активный слайд
-		// centeredSlides: true,
+		centeredSlides: true,
+		// чтобы небыло пропусков вконце группы тамбов
+		slidesPerGroup: 1,
+		centeredSlidesBounds: true,
 		loop: true,
-		speed: 2400,
-		parallax: true,
+		speed: 100,
 		breakpoints: {
 			992: {
 				slidesPerView: 8,
@@ -82,8 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		spaceBetween: 5,
 	})
 
-	swiperProject.controller.control = swiperThumb
-	swiperThumb.controller.control = swiperProject
+	const swiperProject = new Swiper('.slider-project', {
+		modules: [Parallax, Controller, Mousewheel, Thumbs],
+		mousewheel: true,
+		thumbs: {
+			swiper: swiperThumb
+		},
+		slidesPerGroupAuto: true,
+		centeredSlides: true,
+		parallax: true,
+		loop: true,
+		speed: 2400,
+	})
+
 
 	const swiperIMG = new Swiper('.slider-img', {
 		modules: [Parallax, Controller, Pagination],
